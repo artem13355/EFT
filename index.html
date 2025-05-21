@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Menu</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="tagilla1-removebg-preview.png">
+    
+</head>
+<body>
+    <nav class="nav-menu">
+        <ul class="nav-list">            <li><a href="#home">Главная</a></li>
+            <li><a href="Factory.html">Завод</a></li>
+            <li><a href="Bosses.html">Боссы</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <section class="intro">
+            <h1>Карты Escape from Tarkov</h1>
+            <p>Данный сайт создан для просмотра наиболее популярных карт в игре Escape from Tarkov. 
+            На этой карте вы сможете посмотреть три карты, на которых будут отмечены точки врагов 
+            и боссов на карте, а также сможете узнать информацию о врагах.</p>
+        </section>
+
+        <div class="photo-section">
+            <a href="Factory.html" class="photo-container">
+                <div class="photo-frame">
+                    <img src="maps/Factory.svg" alt="Карта Factory">
+                </div>
+                <div class="photo-info">
+                    <h3>Завод (Factory)</h3>
+                    <p>Заброшенный химический завод с запутанными коридорами и множеством точек столкновения</p>
+                </div>
+            </a>            <a href="Bosses.html" class="photo-container">
+                <div class="photo-frame">
+                    <img src="Skull-Bundle-min.png" alt="Боссы Таркова">
+                </div>
+                <div class="photo-info">
+                    <h3>Боссы</h3>
+                    <p>Информация о боссах в игре и их местонахождении на картах</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="slider-container">
+            <div class="slider">
+                <div class="slides">
+                    <div class="slide">
+                        <iframe src="https://www.youtube.com/embed/UPnrY5BxddI" allowfullscreen></iframe>
+                    </div>
+                    <div class="slide">
+                        <iframe src="https://www.youtube.com/embed/KZP7VB7KeB4" allowfullscreen></iframe>
+                    </div>
+                    <div class="slide">
+                        <iframe src="https://www.youtube.com/embed/DLYvQHmeeTE" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <div class="slider-arrow prev" onclick="prevSlide()">&#10094;</div>
+                <div class="slider-arrow next" onclick="nextSlide()">&#10095;</div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

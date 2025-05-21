@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Боссы - Tarkov Maps</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="tagilla1-removebg-preview.png">
+    <style>        
+    .boss-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            justify-content: center;
+            align-items: stretch;
+        }
+
+        .boss-card {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #b3a06b;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .boss-card:hover {
+            transform: scale(1.05);
+            border-color: #ffffff;
+        }
+
+        .boss-image {
+            width: 100%;
+            height: 280px;
+            object-fit: fill;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #b3a06b;
+        }
+
+        .boss-info h3 {
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+
+        .boss-info p {
+            color: #ccc;
+            margin-bottom: 10px;
+        }
+
+        .location-tag {
+            display: inline-block;
+            background: #444;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            color: #fff;
+        }        .boss-type {
+            color: #ffd700;
+            font-size: 0.8em;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            overflow: auto;
+        }
+
+        .modal-content {
+            background: rgba(0, 0, 0, 0.95);
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #b3a06b;
+            width: 70%;
+            max-width: 800px;
+            border-radius: 10px;
+            position: relative;
+            color: #fff;
+        }
+
+        .close-button {
+            color: #b3a06b;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-button:hover {
+            color: #fff;
+        }
+
+        .modal-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            border: 1px solid #b3a06b;
+            border-radius: 5px;
+        }
+
+        .modal-info {
+            padding: 20px;
+        }
+
+        .modal-info h2 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 2em;
+        }        .modal-info p {
+            color: #ccc;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .modal-locations {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .modal-locations .location-tag {
+            background: rgba(179, 160, 107, 0.3);
+            border: 1px solid #b3a06b;
+        }
+
+        .boss-card {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-menu">
+        <ul class="nav-list">
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="Factory.html">Завод</a></li>
+            <li><a href="Bosses.html">Боссы</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <section class="intro">
+            <h1>Боссы Escape from Tarkov</h1>
+            <p>Ознакомьтесь с самыми опасными противниками в игре, их локациями и особенностями.</p>
+        </section>
+
+        <div class="boss-container">
+            <div class="boss-card">
+                <img src="bosses/Tagilla.webp" alt="Тагилла" class="boss-image">
+                <div class="boss-info">
+                    <h3>Тагилла</h3>
+                    <p>Жестокий владелец подпольного бойцовского клуба. Использует кувалду "Большая сделка" и тяжелую броню. Предпочитает ближний бой.</p>
+                    <span class="location-tag">Завод</span>
+                </div>
+            </div>
+
+            <div class="boss-card">
+                <img src="bosses/Shadow_of_Tagilla.webp" alt="Shadow of Tagilla" class="boss-image">
+                <div class="boss-info">
+                    <h3>Shadow of Tagilla</h3>
+                    <p>Загадочный двойник Тагиллы. Использует схожую тактику и вооружение, но обладает уникальными особенностями.</p>
+                    <span class="location-tag">лабиринты</span>
+                </div>
+            </div>
+
+            <div class="boss-card">
+                <img src="bosses/Gluhar.webp" alt="Глухарь" class="boss-image">
+                <div class="boss-info">
+                    <h3>Глухарь</h3>
+                    <p>Бывший инструктор спецназа. Командует отрядом из опытных бойцов. Использует тактическое преимущество и современное вооружение.</p>
+                    <span class="location-tag">Резерв</span>
+                </div>
+            </div>
+
+            <div class="boss-card">
+                <img src="bosses/Kaban.webp" alt="Кабан" class="boss-image">
+                <div class="boss-info">
+                    <h3>Кабан</h3>
+                    <p>Опытный боец ЧВК. Вооружен АШ-12 и гранатометом. Использует агрессивную тактику штурма.</p>
+                    <span class="location-tag">Улицы Таркова</span>
+                </div>
+            </div>
+
+            <div class="boss-card">
+                <img src="bosses/Killa.webp" alt="Килла" class="boss-image">
+                <div class="boss-info">
+                    <h3>Килла</h3>
+                    <p>Бывший чемпион по самбо. Носит особый бронекостюм "Горилла" и характерную маску. Вооружен РПК-16.</p>
+                    <span class="location-tag">Развязка</span>
+                </div>
+            </div>
+
+            <div class="boss-card">
+                <img src="bosses/Kollontay.webp" alt="Коллонтай" class="boss-image">
+                <div class="boss-info">
+                    <h3>Коллонтай</h3>
+                    <p>Опытный командир, руководящий подразделением хорошо экипированных бойцов. Использует продвинутую тактику боя.</p>
+                    <span class="location-tag">Улицы Таркова</span>
+                </div>
+            </div>
+
+            <div class="boss-card">
+                <img src="bosses/решала.webp" alt="Решала" class="boss-image">
+                <div class="boss-info">
+                    <h3>Решала</h3>
+                    <p>Лидер группировки дилеров. Всегда окружен 4 хорошо вооруженными телохранителями. Использует гранаты и точную стрельбу.</p>
+                    <span class="location-tag">Таможня</span>
+                </div>
+            </div>
+
+            <div class="boss-card">
+                <img src="bosses/Sanitar.webp" alt="Санитар" class="boss-image">
+                <div class="boss-info">
+                    <h3>Санитар</h3>
+                    <p>Таинственный врач-экспериментатор. Использует боевые стимуляторы и быстро лечится. Сопровождается специально обученной охраной.</p>
+                    <span class="location-tag">Берег</span>
+                </div>
+            </div>
+
+            <div class="boss-card">
+                <img src="bosses/Shturman.webp" alt="Штурман" class="boss-image">
+                <div class="boss-info">
+                    <h3>Штурман</h3>
+                    <p>Элитный снайпер. Использует СВДС и действует в паре с опытными телохранителями. Предпочитает дальний бой.</p>                <span class="location-tag">Лес</span>
+                </div>
+            </div>
+
+            <div class="boss-card">
+                <img src="bosses/BigPipe.webp" alt="Big Pipe" class="boss-image">
+                <div class="boss-info">                    <h3>Big Pipe</h3>
+                    <p>Член элитной группировки "Гунтс". Специализируется на тяжелом вооружении и использовании гранатометов.</p>
+                    <span class="location-tag">Таможня, Лес, Маяк, Берег</span>
+                </div>
+            </div>
+
+            <div class="boss-card">
+                <img src="bosses/Knight.webp" alt="Knight" class="boss-image">
+                <div class="boss-info">
+                    <h3>Knight</h3>
+                    <p>Лидер группировки "Гунтс". Носит тяжелую броню и использует продвинутую тактику боя.</p>
+                    <span class="location-tag">Таможня, Лес, Маяк, Берег</span>
+                </div>
+            </div>
+
+            <div class="boss-card">
+                <img src="bosses/Birdeye.webp" alt="Birdeye" class="boss-image">
+                <div class="boss-info">
+                    <h3>Birdeye</h3>
+                    <p>Снайпер группировки "Гунтс". Специализируется на дальних дистанциях и использует тепловизионную оптику.</p>
+                    <span class="location-tag">Таможня, Лес, Маяк, Берег</span>
+                </div>
+            </div>
+
+            <div class="boss-card">
+                <img src="bosses/CultistCloseup.webp" alt="Сектант Жрец" class="boss-image">
+                <div class="boss-info">
+                    <h3>Сектант Жрец</h3>
+                    <p>Лидер культистов. Появляется ночью и использует отравленное холодное оружие. Крайне опасен в ближнем бою.</p>
+                    <span class="location-tag">Таможня, Лес, Берег, Ночной Завод, Эпицентр 21+</span>
+                </div>
+            </div>
+
+            <div class="boss-card">
+                <img src="bosses/ZryachiyPortrait.webp" alt="Зрячий" class="boss-image">
+                <div class="boss-info">
+                    <h3>Зрячий</h3>
+                    <p>Опытный снайпер с продвинутым снаряжением. Использует тепловизоры и винтовку RSASS. Предпочитает дальний бой.</p>
+                    <span class="location-tag">Маяк</span>
+                </div>
+            </div>
+
+            <div class="boss-card">
+                <img src="bosses/Partisan.webp" alt="Партизан" class="boss-image">
+                <div class="boss-info">
+                    <h3>Партизан</h3>
+                    <p>Опытный боец сопротивления. Использует партизанскую тактику и хорошо знает местность. Мастерски устраивает засады.</p>
+                    <span class="location-tag">Таможня, Лес, Маяк, Берег</span>
+                </div>
+            </div>        </div>
+
+        <!-- Модальные окна -->
+        <div id="modal-тагилла" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <img src="bosses/Tagilla.webp" alt="Тагилла" class="modal-image">
+                <div class="modal-info">
+                    <h2>Тагилла</h2>
+                    <p>Жестокий владелец подпольного бойцовского клуба на территории Завода. Носит тяжелую броню класса 5 и характерную сварочную маску. Его основное оружие - кувалда "Большая сделка", которой он может убить игрока одним ударом. Также может использовать дробовик САЙГА-12.</p>                    <p><strong>Локации:</strong></p>
+                    <div class="modal-locations">
+                        <span class="location-tag">Завод</span>
+                    </div>
+                    <p><strong>Особенности:</strong> Высокая скорость передвижения, мощные удары кувалдой, тяжелая броня</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-shadow-of-tagilla" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <img src="bosses/Shadow_of_Tagilla.webp" alt="Shadow of Tagilla" class="modal-image">
+                <div class="modal-info">
+                    <h2>Shadow of Tagilla</h2>
+                    <p>Загадочная версия Тагиллы, появляющаяся в лабиринтах. Обладает повышенным здоровьем и уникальными способностями. Использует ту же тактику, что и оригинальный Тагилла, но более агрессивен.</p>
+                    <p><strong>Локации:</strong></p>
+                    <div class="modal-locations">
+                        <span class="location-tag">Лабиринты</span>
+                    </div>
+                    <p><strong>Особенности:</strong> Улучшенные характеристики, повышенная агрессивность</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-глухарь" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <img src="bosses/Gluhar.webp" alt="Глухарь" class="modal-image">
+                <div class="modal-info">
+                    <h2>Глухарь</h2>
+                    <p>Бывший инструктор спецназа ФСБ. Командует отрядом из 6 хорошо вооруженных последователей. Использует сложную тактику ведения боя и имеет доступ к лучшему военному снаряжению.</p>
+                    <p><strong>Локация:</strong> Резерв</p>
+                    <p><strong>Особенности:</strong> Тактическая координация с отрядом, современное вооружение</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-кабан" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <img src="bosses/Kaban.webp" alt="Кабан" class="modal-image">
+                <div class="modal-info">
+                    <h2>Кабан</h2>
+                    <p>Опытный боец ЧВК, специализирующийся на штурмовых операциях. Вооружен АШ-12 и гранатометом, использует агрессивную тактику прорыва позиций противника.</p>
+                    <p><strong>Локация:</strong> Улицы Таркова</p>
+                    <p><strong>Особенности:</strong> Тяжелое вооружение, агрессивная тактика штурма</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-килла" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <img src="bosses/Killa.webp" alt="Килла" class="modal-image">
+                <div class="modal-info">
+                    <h2>Килла</h2>
+                    <p>Бывший чемпион по самбо. Носит уникальный бронекостюм "Горилла" и фирменную маску с УФ-подсветкой. Основное оружие - РПК-16. Известен своей способностью быстро менять позицию и вести шквальный огонь.</p>
+                    <p><strong>Локация:</strong> Развязка</p>
+                    <p><strong>Особенности:</strong> Мощная броня, высокая мобильность, шквальный огонь</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-коллонтай" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <img src="bosses/Kollontay.webp" alt="Коллонтай" class="modal-image">
+                <div class="modal-info">
+                    <h2>Коллонтай</h2>
+                    <p>Опытный командир спецподразделения. Руководит отрядом хорошо экипированных бойцов. Использует передовую тактику ведения боя и координацию действий группы.</p>
+                    <p><strong>Локация:</strong> Улицы Таркова</p>
+                    <p><strong>Особенности:</strong> Командная тактика, современное снаряжение</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-решала" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <img src="bosses/решала.webp" alt="Решала" class="modal-image">
+                <div class="modal-info">
+                    <h2>Решала</h2>
+                    <p>Лидер группировки дилеров на Таможне. Всегда сопровождается 4 хорошо вооруженными телохранителями. Использует тактические гранаты и ведет прицельный огонь.</p>
+                    <p><strong>Локация:</strong> Таможня</p>
+                    <p><strong>Особенности:</strong> Охрана из 4 человек, тактическое использование гранат</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-санитар" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <img src="bosses/Sanitar.webp" alt="Санитар" class="modal-image">
+                <div class="modal-info">
+                    <h2>Санитар</h2>
+                    <p>Загадочный врач-экспериментатор. Использует боевые стимуляторы и имеет способность быстро восстанавливать здоровье. Сопровождается специально обученными охранниками.</p>
+                    <p><strong>Локация:</strong> Берег</p>
+                    <p><strong>Особенности:</strong> Быстрая регенерация, использование стимуляторов</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-штурман" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <img src="bosses/Shturman.webp" alt="Штурман" class="modal-image">
+                <div class="modal-info">
+                    <h2>Штурман</h2>
+                    <p>Элитный снайпер. Использует СВДС и действует в сопровождении двух опытных телохранителей. Предпочитает вести бой на дальних дистанциях.</p>
+                    <p><strong>Локация:</strong> Лес</p>
+                    <p><strong>Особенности:</strong> Снайперская винтовка СВДС, дальний бой</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-big-pipe" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <img src="bosses/BigPipe.webp" alt="Big Pipe" class="modal-image">
+                <div class="modal-info">
+                    <h2>Big Pipe</h2>
+                    <p>Член элитной группировки "Гунтс". Специализируется на тяжелом вооружении и использовании гранатометов. Отличается высокой огневой мощью.</p>
+                    <p><strong>Локация:</strong> Таможня, Лес, Маяк, Берег</p>
+                    <p><strong>Особенности:</strong> Тяжелое вооружение, использование гранатометов</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-knight" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <img src="bosses/Knight.webp" alt="Knight" class="modal-image">
+                <div class="modal-info">
+                    <h2>Knight</h2>
+                    <p>Лидер группировки "Гунтс". Носит тяжелую броню и координирует действия своей команды. Использует передовую тактику ведения боя.</p>                    <p><strong>Локации:</strong></p>
+                    <div class="modal-locations">
+                        <span class="location-tag">Таможня</span>
+                        <span class="location-tag">Лес</span>
+                        <span class="location-tag">Маяк</span>
+                        <span class="location-tag">Берег</span>
+                    </div>
+                    <p><strong>Особенности:</strong> Тяжелая броня, тактическое командование</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-birdeye" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <img src="bosses/Birdeye.webp" alt="Birdeye" class="modal-image">
+                <div class="modal-info">
+                    <h2>Birdeye</h2>
+                    <p>Снайпер группировки "Гунтс". Использует тепловизионную оптику и специализируется на поражении целей на дальних дистанциях.</p>
+                    <p><strong>Локации:</strong></p>
+                    <div class="modal-locations">
+                        <span class="location-tag">Таможня</span>
+                        <span class="location-tag">Лес</span>
+                        <span class="location-tag">Маяк</span>
+                        <span class="location-tag">Берег</span>
+                    </div>
+                    <p><strong>Особенности:</strong> Тепловизионная оптика, дальний бой</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-сектант-жрец" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <img src="bosses/CultistCloseup.webp" alt="Сектант Жрец" class="modal-image">
+                <div class="modal-info">                    <h2>Сектант Жрец</h2>
+                    <p>Лидер культистов. Появляется только ночью и использует отравленное холодное оружие. Возглавляет группу фанатичных последователей.</p>
+                    <p><strong>Локации:</strong></p>
+                    <div class="modal-locations">
+                        <span class="location-tag">Таможня</span>
+                        <span class="location-tag">Лес</span>
+                        <span class="location-tag">Берег</span>
+                        <span class="location-tag">Ночной Завод</span>
+                        <span class="location-tag">Эпицентр 21+</span>
+                    </div>
+                    <p><strong>Особенности:</strong> Ночное появление, отравленное оружие</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-зрячий" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <img src="bosses/ZryachiyPortrait.webp" alt="Зрячий" class="modal-image">
+                <div class="modal-info">
+                    <h2>Зрячий</h2>
+                    <p>Опытный снайпер с продвинутым снаряжением. Использует тепловизоры и винтовку RSASS для точного поражения целей на большой дистанции.</p>
+                    <p><strong>Локация:</strong> Улицы Таркова</p>
+                    <p><strong>Особенности:</strong> Тепловизионное оборудование, высокоточное оружие</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-партизан" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <img src="bosses/Partisan.webp" alt="Партизан" class="modal-image">
+                <div class="modal-info">
+                    <h2>Партизан</h2>
+                    <p>Опытный боец сопротивления. Отлично знает местность и использует партизанскую тактику. Мастерски устраивает засады и внезапные нападения.</p>                    <p><strong>Локации:</strong></p>
+                    <div class="modal-locations">
+                        <span class="location-tag">Улицы Таркова</span>
+                    </div>
+                    <p><strong>Особенности:</strong> Партизанская тактика, знание местности</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Получаем все карточки боссов и модальные окна
+        const bossCards = document.querySelectorAll('.boss-card');
+        const modals = document.querySelectorAll('.modal');
+        const closeButtons = document.querySelectorAll('.close-button');
+
+        // Добавляем обработчики событий для каждой карточки
+        bossCards.forEach((card, index) => {
+            card.addEventListener('click', () => {
+                const bossName = card.querySelector('h3').textContent.toLowerCase();
+                const modalId = 'modal-' + bossName.replace(/\s+/g, '-');
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.style.display = 'block';
+                }
+            });
+        });
+
+        // Добавляем обработчики для кнопок закрытия
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const modal = button.closest('.modal');
+                modal.style.display = 'none';
+            });
+        });
+
+        // Закрываем модальное окно при клике вне его области
+        window.addEventListener('click', (event) => {
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
