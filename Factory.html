@@ -365,16 +365,6 @@ markers.forEach(marker => {
         })
         .addTo(map);
 });
-
-// Добавляем обработчик клика для просмотра координат
-map.on('click', function(e) {
-    const coords = e.latlng;
-    console.log(`Координаты клика: [${Math.round(coords.lat)}, ${Math.round(coords.lng)}]`);
-    L.popup()
-        .setLatLng(e.latlng)
-        .setContent(`Координаты: [${Math.round(coords.lat)}, ${Math.round(coords.lng)}]`)
-        .openOn(map);
-});
     </script>
 </body>
 </html>
